@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -167,5 +167,89 @@
                         </div>
                     </div>
                 </div>
+                
+                <div id="platforms-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+                </div>
 
-                <div id="platforms-grid" class="grid md:
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-2xl font-bold text-center mb-6">真實單位成本比較 (估算單次10秒1080p影片)</h3>
+                    <div class="chart-container">
+                        <canvas id="costChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="strategy" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">創作策略：打造完美的循環影片</h2>
+                    <p class="text-lg text-gray-600 mt-2">掌握核心技巧，將您的創意化為令人驚嘆的動態影像。</p>
+                </div>
+                
+                <div class="max-w-4xl mx-auto">
+                    <div class="mb-4 flex justify-center border-b border-gray-200">
+                        <button class="tab active py-2 px-4 text-gray-500 border-b-2 font-medium" data-tab="duration">最佳時長</button>
+                        <button class="tab py-2 px-4 text-gray-500 border-b-2 font-medium" data-tab="workflow">工作流程</button>
+                        <button class="tab py-2 px-4 text-gray-500 border-b-2 font-medium" data-tab="prompting">提示詞工程</button>
+                    </div>
+                    <div id="tab-content" class="p-4">
+                        <div id="duration-content">
+                            <h3 class="text-2xl font-bold mb-4">🌀 尋找「甜蜜點」</h3>
+                            <p class="text-gray-700 mb-4">直接生成超長影片並非最佳策略。由於AI在維持長時間連貫性上的挑戰（稱為「AI漂移」）以及高昂的運算成本，專業創作者普遍採用更聰明的方法。</p>
+                            <div class="bg-teal-50 border-l-4 border-teal-500 text-teal-900 p-4 rounded-r-lg" role="alert">
+                                <p class="font-bold">專家建議：10-15秒</p>
+                                <p>這個時長區間是藝術追求與技術可行性之間的完美平衡。它既能讓緩慢、優雅的動態有足夠時間展現，又在頂級模型的穩定能力範圍內，能有效避免畫面瑕疵，是製作高品質循環影片的理想基礎片段長度。</p>
+                            </div>
+                        </div>
+                        <div id="workflow-content" class="hidden">
+                             <h3 class="text-2xl font-bold mb-4">🎨 選擇正確的畫布</h3>
+                             <div class="grid md:grid-cols-2 gap-6">
+                                <div class="border p-4 rounded-lg bg-gray-50">
+                                    <h4 class="font-bold text-lg mb-2">圖像至影片 (Img2Vid) - ✅ 推薦</h4>
+                                    <p class="text-sm text-gray-600">這是最穩妥、錯誤率最低的方法。從一張高品質的靜態圖像開始，為AI的生成過程提供了一個強大而明確的視覺錨點，能最大限度地減少不必要的創意偏差，確保最終動態與您的核心概念一致。</p>
+                                </div>
+                                <div class="border p-4 rounded-lg bg-gray-50">
+                                     <h4 class="font-bold text-lg mb-2">影片至影片 (Vid2Vid) - ⚠️ 謹慎使用</h4>
+                                     <p class="text-sm text-gray-600">此方法更適用於風格轉換（如真人轉動畫）或對現有影片進行微調，而非從零創造。直接用它「重製」一個現有影片，不僅效果難以保證，還可能陷入「實質性相似」的版權風險。</p>
+                                </div>
+                             </div>
+                        </div>
+                        <div id="prompting-content" class="hidden">
+                            <h3 class="text-2xl font-bold mb-4">✍️ 用語言駕馭動態</h3>
+                            <p class="text-gray-700 mb-4">當您從圖像生成影片時，提示詞的重點應完全專注於描述「動態」，而非場景本身。</p>
+                            <div class="bg-gray-800 text-white p-4 rounded-lg font-mono text-sm">
+                                <p><span class="text-purple-400"># 控制速度的關鍵詞</span></p>
+                                <p>"slow motion", "glacial pace", "gentle flow", "subtle movement", "imperceptible speed"</p>
+                                <br>
+                                <p><span class="text-purple-400"># 確保循環的提示詞 (Midjourney範例)</span></p>
+                                <p>"...golden dust particles flow slowly and gracefully across the surface in a continuous, mesmerizing pattern <span class="text-green-400">--loop --motion low</span>"</p>
+                                <br>
+                                <p><span class="text-purple-400"># 排除不必要動態的負面提示</span></p>
+                                <p>"<span class="text-green-400">--no</span> fast, jitter, shaking, abrupt"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="legal" class="py-20">
+            <div class="container mx-auto px-6 max-w-4xl">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">法律與版權指南</h2>
+                    <p class="text-lg text-gray-600 mt-2">在AI時代，保護您的創作並尊重他人權利。</p>
+                </div>
+                <div id="accordion-container" class="space-y-4">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <div class="accordion-title p-4 flex justify-between items-center">
+                            <h3 class="font-semibold text-lg">直接使用網路影片的風險？</h3>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content px-4">
+                            <p>直接使用您從網路下載的影片具有極高的版權侵權風險。即使是非商業用途，也極有可能無法通過「合理使用」的法律檢驗。更重要的是，用AI「重製」一個視覺上高度相似的影片，可能構成「實質性相似」，同樣屬於侵權行為。</p>
+                            <p class="mt-2 font-bold text-red-600">結論：必須創作一個全新的、具有獨創性表達的原創作品。</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <div clas
