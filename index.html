@@ -1,4 +1,4 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
@@ -252,4 +252,315 @@
                         </div>
                     </div>
                      <div class="accordion-item bg-white rounded-lg shadow-sm">
-                        <div clas
+                        <div class="accordion-title p-4 flex justify-between items-center">
+                            <h3 class="font-semibold text-lg">AI生成的影片有版權嗎？</h3>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content px-4">
+                            <p>單純由AI自動生成的內容，因缺乏「人類作者」要素，通常無法獲得版權保護。但是，若您的創作過程涉及大量的「人類創造性投入」，則可以主張版權。這包括：</p>
+                            <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li>精心設計、反覆修改的提示詞工程。</li>
+                                <li>從多個AI生成版本中進行有目的的篩選與策劃。</li>
+                                <li>對AI素材進行大量的後期編輯、調色、剪輯等。</li>
+                            </ul>
+                             <p class="mt-2 font-bold text-green-600">結論：人類的創造性介入越深，版權主張力越強。</p>
+                        </div>
+                    </div>
+                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                        <div class="accordion-title p-4 flex justify-between items-center">
+                            <h3 class="font-semibold text-lg">如何實際保護我的AI作品？</h3>
+                            <span>▼</span>
+                        </div>
+                        <div class="accordion-content px-4">
+                            <p>在數位時代，保護的重點已從「預防複製」轉向「嚇阻濫用」和「有效追索」。與其追求無法實現的技術防堵，不如建立清晰的權利主張路徑：</p>
+                             <ul class="list-disc list-inside mt-2 space-y-1">
+                                <li><span class="font-bold">務實的浮水印：</span>在影片角落或頁腳添加一個簡單的署名，如「視覺創作 by [您的名字]」，作為所有權聲明。</li>
+                                <li><span class="font-bold">DMCA下架通知：</span>這是最強大、最具成本效益的維權工具。當發現侵權時，可依法向託管網站的服務商發送通知，要求其移除侵權內容。</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 AI影片生成互動指南. All rights reserved.</p>
+            <p class="text-sm text-gray-400 mt-2">本指南資訊基於截至2025年8月的公開資料，AI領域發展迅速，具體功能與定價請以各平台官網為準。</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const platformData = [
+                {
+                    id: 'runway',
+                    name: 'Runway',
+                    logo: '⚙️',
+                    strength: '創作者的一站式工作室',
+                    price: 12,
+                    cost: 0.96,
+                    res: '1080p+',
+                    length: '16s+',
+                    tags: ['pro', 'cinema'],
+                    features: ['commercial', 'highRes', 'fineControl', 'api']
+                },
+                {
+                    id: 'pika',
+                    name: 'Pika Labs',
+                    logo: '🎨',
+                    strength: '功能驅動的創新者',
+                    price: 8,
+                    cost: 0.55,
+                    res: '1080p',
+                    length: '10s+',
+                    tags: ['social', 'pro'],
+                    features: ['commercial', 'highRes', 'loop']
+                },
+                {
+                    id: 'kling',
+                    name: 'Kling (可灵)',
+                    logo: '🐉',
+                    strength: '來自東方的高保真挑戰者',
+                    price: 7,
+                    cost: 0.70,
+                    res: '4K',
+                    length: '3min',
+                    tags: ['cinema', 'pro'],
+                    features: ['commercial', 'highRes', 'fineControl', 'api']
+                },
+                {
+                    id: 'hailuo',
+                    name: 'Hailuo (海螺)',
+                    logo: '🐚',
+                    strength: '高效易用的生成器',
+                    price: 10,
+                    cost: 0.11,
+                    res: '1080p',
+                    length: '10s',
+                    tags: ['social', 'explorer'],
+                    features: ['commercial', 'highRes', 'api']
+                },
+                {
+                    id: 'pixverse',
+                    name: 'Pixverse',
+                    logo: '📱',
+                    strength: '友好的入門平台',
+                    price: 10,
+                    cost: 0.10,
+                    res: '1080p',
+                    length: '6s',
+                    tags: ['social', 'explorer'],
+                    features: ['commercial', 'highRes', 'api']
+                },
+                {
+                    id: 'leonardo',
+                    name: 'Leonardo.ai (Veo 3)',
+                    logo: '🦁',
+                    strength: '聚合器與創意套件',
+                    price: 10,
+                    cost: 0.30, 
+                    res: '1080p',
+                    length: '8s',
+                    tags: ['pro', 'cinema'],
+                    features: ['commercial', 'highRes', 'loop']
+                },
+                 {
+                    id: 'midjourney',
+                    name: 'Midjourney',
+                    logo: '🚀',
+                    strength: '圖像優先的影片生態',
+                    price: 10,
+                    cost: 0.80,
+                    res: '480p (需升頻)',
+                    length: '21s',
+                    tags: ['pro', 'cinema', 'explorer'],
+                    features: ['commercial', 'loop', 'fineControl']
+                },
+                {
+                    id: 'sora',
+                    name: 'OpenAI Sora',
+                    logo: '🌌',
+                    strength: '電影級敘事大師',
+                    price: 20,
+                    cost: 6.00,
+                    res: '1080p',
+                    length: '20s',
+                    tags: ['cinema'],
+                    features: ['commercial', 'highRes', 'loop']
+                }
+            ];
+
+            const platformsGrid = document.getElementById('platforms-grid');
+            const personaFilter = document.getElementById('persona-filter');
+            const featuresFilter = document.getElementById('features-filter');
+            let costChart;
+
+            function renderPlatforms(filteredData) {
+                platformsGrid.innerHTML = '';
+                if (filteredData.length === 0) {
+                    platformsGrid.innerHTML = `<p class="text-gray-500 col-span-full text-center">沒有找到符合條件的平台。</p>`;
+                    return;
+                }
+                filteredData.forEach(p => {
+                    const card = `
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                            <div class="flex items-center mb-4">
+                                <span class="text-3xl mr-4">${p.logo}</span>
+                                <div>
+                                    <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
+                                    <p class="text-sm text-gray-500">${p.strength}</p>
+                                </div>
+                            </div>
+                            <div class="mt-auto pt-4 border-t border-gray-200 grid grid-cols-3 gap-2 text-center">
+                                <div>
+                                    <p class="text-xs text-gray-500">起價(月)</p>
+                                    <p class="font-bold text-lg">$${p.price}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">解析度</p>
+                                    <p class="font-bold text-lg">${p.res}</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-gray-500">最大長度</p>
+                                    <p class="font-bold text-lg">${p.length}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    platformsGrid.innerHTML += card;
+                });
+            }
+
+            function updateChart(filteredData) {
+                const chartData = {
+                    labels: filteredData.map(p => p.name),
+                    datasets: [{
+                        label: '估算成本 (美元)',
+                        data: filteredData.map(p => p.cost),
+                        backgroundColor: 'rgba(12, 138, 138, 0.6)',
+                        borderColor: 'rgba(12, 138, 138, 1)',
+                        borderWidth: 1
+                    }]
+                };
+
+                if (costChart) {
+                    costChart.data = chartData;
+                    costChart.update();
+                } else {
+                    const ctx = document.getElementById('costChart').getContext('2d');
+                    costChart = new Chart(ctx, {
+                        type: 'bar',
+                        data: chartData,
+                        options: {
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            scales: {
+                                y: {
+                                    beginAtZero: true,
+                                    title: {
+                                        display: true,
+                                        text: '美元 ($)'
+                                    }
+                                }
+                            },
+                            plugins: {
+                                tooltip: {
+                                    callbacks: {
+                                        label: function(context) {
+                                            return ` $${context.raw.toFixed(2)}`;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    });
+                }
+            }
+            
+            function filterAndRender() {
+                const selectedPersona = personaFilter.value;
+                const selectedFeatures = Array.from(featuresFilter.querySelectorAll('input:checked')).map(el => el.value);
+
+                let filtered = platformData;
+
+                if (selectedPersona !== 'all') {
+                    filtered = filtered.filter(p => p.tags.includes(selectedPersona));
+                }
+
+                if (selectedFeatures.length > 0) {
+                    filtered = filtered.filter(p => selectedFeatures.every(feature => p.features.includes(feature)));
+                }
+                
+                filtered.sort((a, b) => a.price - b.price);
+
+                renderPlatforms(filtered);
+                updateChart(filtered);
+            }
+
+            personaFilter.addEventListener('change', filterAndRender);
+            featuresFilter.addEventListener('change', filterAndRender);
+            
+            filterAndRender();
+
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = {
+                duration: document.getElementById('duration-content'),
+                workflow: document.getElementById('workflow-content'),
+                prompting: document.getElementById('prompting-content')
+            };
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+
+                    Object.values(tabContents).forEach(content => content.classList.add('hidden'));
+                    tabContents[tab.dataset.tab].classList.remove('hidden');
+                });
+            });
+            
+            const accordionItems = document.querySelectorAll('.accordion-item');
+            accordionItems.forEach(item => {
+                const title = item.querySelector('.accordion-title');
+                const content = item.querySelector('.accordion-content');
+                const icon = title.querySelector('span');
+
+                title.addEventListener('click', () => {
+                    const isOpen = content.classList.contains('open');
+                    
+                    document.querySelectorAll('.accordion-content').forEach(c => c.classList.remove('open'));
+                    document.querySelectorAll('.accordion-title span').forEach(i => i.style.transform = 'rotate(0deg)');
+
+                    if (!isOpen) {
+                        content.classList.add('open');
+                        icon.style.transform = 'rotate(180deg)';
+                    }
+                });
+            });
+
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(this.getAttribute('href'));
+                    if (targetElement) {
+                         targetElement.scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    if (mobileMenu.classList.contains('hidden') === false) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
