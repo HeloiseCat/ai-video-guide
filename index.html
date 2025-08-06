@@ -9,15 +9,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
-    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Chosen Palette: Custom palette based on user's website screenshots -->
     <!-- Application Structure Plan: A task-oriented SPA with four main sections: Home, an interactive Platform Selector with filters and a dynamic chart, a Creation Strategy guide with tabs, and a Legal Guide with accordions. This structure is chosen to guide the user through a decision-making process—from understanding the landscape to selecting a tool, learning techniques, and finally considering legal aspects—rather than just presenting the report's text linearly. -->
     <!-- Visualization & Content Choices: Report Info (Platform pricing/features) -> Goal (Compare cost/value) -> Viz (Interactive cards + dynamic bar chart) -> Interaction (Filters update cards/chart) -> Justification (Allows personalized comparison) -> Library (Chart.js). Report Info (Legal concepts) -> Goal (Simplify complex info) -> Viz (Accordion) -> Interaction (Click to expand) -> Justification (Prevents information overload). -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: #fdfcf9;
-            color: #4a4a4a;
+            background-color: #f9f5f0; /* Warm Beige Background */
+            color: #3a3a3a; /* Dark Gray Text */
         }
         .chart-container {
             position: relative;
@@ -38,19 +41,12 @@
             border-bottom: 2px solid transparent;
         }
         .nav-link:hover, .nav-link.active {
-            color: #0c8a8a;
-            border-bottom-color: #0c8a8a;
-        }
-        .persona-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .persona-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            color: #8c6d83; /* Mauve Accent for hover */
+            border-bottom-color: #8c6d83;
         }
         .tab.active {
-            border-color: #0c8a8a;
-            background-color: #0c8a8a;
+            border-color: #8c6d83; /* Mauve Accent */
+            background-color: #8c6d83;
             color: white;
         }
         .accordion-title {
@@ -58,7 +54,7 @@
             transition: background-color 0.3s;
         }
         .accordion-title:hover {
-            background-color: #f0f0f0;
+            background-color: #f0ebe5;
         }
         .accordion-content {
             max-height: 0;
@@ -74,65 +70,65 @@
 </head>
 <body class="antialiased">
 
-    <header class="bg-white/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm">
+    <header class="bg-[#f9f5f0]/80 backdrop-blur-lg sticky top-0 z-50 shadow-sm border-b border-[#e0d9cf]">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="text-2xl font-bold text-gray-800">
-                <span class="text-[#0c8a8a]">AI</span>影片生成指南
+            <div class="text-2xl font-bold text-[#3a3a3a]">
+                <span class="text-[#6a736b]">AI</span>影片生成指南
             </div>
             <div class="hidden md:flex space-x-8">
-                <a href="#home" class="nav-link text-gray-600 pb-1">首頁</a>
-                <a href="#selector" class="nav-link text-gray-600 pb-1">平台比較</a>
-                <a href="#strategy" class="nav-link text-gray-600 pb-1">創作策略</a>
-                <a href="#legal" class="nav-link text-gray-600 pb-1">法律指南</a>
+                <a href="#home" class="nav-link text-[#6a736b] pb-1 font-medium">首頁</a>
+                <a href="#selector" class="nav-link text-[#6a736b] pb-1 font-medium">平台比較</a>
+                <a href="#strategy" class="nav-link text-[#6a736b] pb-1 font-medium">創作策略</a>
+                <a href="#legal" class="nav-link text-[#6a736b] pb-1 font-medium">法律指南</a>
             </div>
             <button id="mobile-menu-button" class="md:hidden focus:outline-none">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                <svg class="w-6 h-6 text-[#6a736b]" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </nav>
-        <div id="mobile-menu" class="hidden md:hidden">
-            <a href="#home" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">首頁</a>
-            <a href="#selector" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">平台比較</a>
-            <a href="#strategy" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">創作策略</a>
-            <a href="#legal" class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100">法律指南</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-[#fdfbf7]">
+            <a href="#home" class="block py-2 px-4 text-sm text-[#3a3a3a] hover:bg-[#f0ebe5]">首頁</a>
+            <a href="#selector" class="block py-2 px-4 text-sm text-[#3a3a3a] hover:bg-[#f0ebe5]">平台比較</a>
+            <a href="#strategy" class="block py-2 px-4 text-sm text-[#3a3a3a] hover:bg-[#f0ebe5]">創作策略</a>
+            <a href="#legal" class="block py-2 px-4 text-sm text-[#3a3a3a] hover:bg-[#f0ebe5]">法律指南</a>
         </div>
     </header>
 
     <main>
-        <section id="home" class="py-20 bg-white">
+        <section id="home" class="py-20">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">航行於AI影片生成的浪潮</h1>
+                <h1 class="text-4xl md:text-5xl font-bold text-[#3a3a3a] mb-4">航行於AI影片生成的浪潮</h1>
                 <p class="text-lg text-gray-600 max-w-3xl mx-auto mb-12">
                     AI影片生成領域正經歷一場前所未有的技術革新。本指南旨在穿透市場的喧囂，提供一個清晰、互動的分析框架，助您根據自身獨特的需求，做出最明智的選擇。
                 </p>
                 <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                    <div class="bg-amber-50 p-6 rounded-lg shadow-sm border border-amber-200">
-                        <h3 class="text-2xl font-bold text-amber-800 mb-2">🎨 品質</h3>
-                        <p class="text-amber-700">追求電影級的視覺效果、物理真實感與整體美學，但通常伴隨著高昂的價格。</p>
+                    <div class="bg-[#fdfbf7] p-6 rounded-lg shadow-sm border border-[#e0d9cf]">
+                        <h3 class="text-2xl font-bold text-[#6a736b] mb-2">🎨 品質</h3>
+                        <p class="text-gray-700">追求電影級的視覺效果、物理真實感與整體美學，但通常伴隨著高昂的價格。</p>
                     </div>
-                    <div class="bg-sky-50 p-6 rounded-lg shadow-sm border border-sky-200">
-                        <h3 class="text-2xl font-bold text-sky-800 mb-2">⚙️ 控制</h3>
-                        <p class="text-sky-700">希望擁有精準的工具箱，對影片的每一幀、每一個動態都有無與倫比的創作自由度。</p>
+                    <div class="bg-[#fdfbf7] p-6 rounded-lg shadow-sm border border-[#e0d9cf]">
+                        <h3 class="text-2xl font-bold text-[#6a736b] mb-2">⚙️ 控制</h3>
+                        <p class="text-gray-700">希望擁有精準的工具箱，對影片的每一幀、每一個動態都有無與倫比的創作自由度。</p>
                     </div>
-                    <div class="bg-emerald-50 p-6 rounded-lg shadow-sm border border-emerald-200">
-                        <h3 class="text-2xl font-bold text-emerald-800 mb-2">💰 成本</h3>
-                        <p class="text-emerald-700">預算有限或需要大量產出，尋求最高性價比的方案，即使犧牲部分品質或控制力。</p>
+                    <div class="bg-[#fdfbf7] p-6 rounded-lg shadow-sm border border-[#e0d9cf]">
+                        <h3 class="text-2xl font-bold text-[#6a736b] mb-2">💰 成本</h3>
+                        <p class="text-gray-700">預算有限或需要大量產出，尋求最高性價比的方案，即使犧牲部分品質或控制力。</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="selector" class="py-20">
+        <section id="selector" class="py-20 bg-[#fdfbf7]">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">互動式平台選擇器</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#3a3a3a]">互動式平台選擇器</h2>
                     <p class="text-lg text-gray-600 mt-2">根據您的需求篩選，找到最適合您的AI影片生成平台。</p>
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md mb-12">
+                <div class="bg-white p-6 rounded-lg shadow-md mb-12 border border-[#e0d9cf]">
                     <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                         <div>
                             <label for="persona-filter" class="block text-sm font-medium text-gray-700 mb-2">1. 選擇您的創作者畫像：</label>
-                            <select id="persona-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#0c8a8a] focus:border-[#0c8a8a]">
+                            <select id="persona-filter" class="w-full p-2 border border-gray-300 rounded-md shadow-sm focus:ring-[#8c6d83] focus:border-[#8c6d83]">
                                 <option value="all">所有畫像</option>
                                 <option value="social">社交媒體達人</option>
                                 <option value="pro">專業創作者/小型企業</option>
@@ -144,23 +140,23 @@
                             <label class="block text-sm font-medium text-gray-700 mb-2">2. 選擇您的專案需求：</label>
                             <div id="features-filter" class="flex flex-wrap gap-4 items-center">
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" value="loop" class="rounded text-[#0c8a8a] focus:ring-[#0c8a8a]">
+                                    <input type="checkbox" value="loop" class="rounded text-[#8c6d83] focus:ring-[#8c6d83]">
                                     <span class="ml-2">無縫循環</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" value="commercial" class="rounded text-[#0c8a8a] focus:ring-[#0c8a8a]">
+                                    <input type="checkbox" value="commercial" class="rounded text-[#8c6d83] focus:ring-[#8c6d83]">
                                     <span class="ml-2">商業使用權</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" value="highRes" class="rounded text-[#0c8a8a] focus:ring-[#0c8a8a]">
+                                    <input type="checkbox" value="highRes" class="rounded text-[#8c6d83] focus:ring-[#8c6d83]">
                                     <span class="ml-2">高解析度 (1080p+)</span>
                                 </label>
                                 <label class="inline-flex items-center">
-                                    <input type="checkbox" value="fineControl" class="rounded text-[#0c8a8a] focus:ring-[#0c8a8a]">
+                                    <input type="checkbox" value="fineControl" class="rounded text-[#8c6d83] focus:ring-[#8c6d83]">
                                     <span class="ml-2">精準控制 (關鍵幀等)</span>
                                 </label>
                                  <label class="inline-flex items-center">
-                                    <input type="checkbox" value="api" class="rounded text-[#0c8a8a] focus:ring-[#0c8a8a]">
+                                    <input type="checkbox" value="api" class="rounded text-[#8c6d83] focus:ring-[#8c6d83]">
                                     <span class="ml-2">API存取</span>
                                 </label>
                             </div>
@@ -171,7 +167,7 @@
                 <div id="platforms-grid" class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
                 </div>
 
-                <div class="bg-white p-6 rounded-lg shadow-md">
+                <div class="bg-white p-6 rounded-lg shadow-md border border-[#e0d9cf]">
                     <h3 class="text-2xl font-bold text-center mb-6">真實單位成本比較 (估算單次10秒1080p影片)</h3>
                     <div class="chart-container">
                         <canvas id="costChart"></canvas>
@@ -180,11 +176,11 @@
             </div>
         </section>
 
-        <section id="strategy" class="py-20 bg-white">
+        <section id="strategy" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">創作策略：打造完美的循環影片</h2>
-                    <p class="text-lg text-gray-600 mt-2">掌握核心技巧，將您的創意化為令人驚嘆的動態影像。</p>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#3a3a3a]">創作策略：打造完美的動態影像</h2>
+                    <p class="text-lg text-gray-600 mt-2">掌握核心技巧，將您的創意化為令人驚嘆的作品。</p>
                 </div>
                 
                 <div class="max-w-4xl mx-auto">
@@ -195,11 +191,28 @@
                     </div>
                     <div id="tab-content" class="p-4">
                         <div id="duration-content">
-                            <h3 class="text-2xl font-bold mb-4">🌀 尋找「甜蜜點」</h3>
-                            <p class="text-gray-700 mb-4">直接生成超長影片並非最佳策略。由於AI在維持長時間連貫性上的挑戰（稱為「AI漂移」）以及高昂的運算成本，專業創作者普遍採用更聰明的方法。</p>
-                            <div class="bg-teal-50 border-l-4 border-teal-500 text-teal-900 p-4 rounded-r-lg" role="alert">
+                            <h3 class="text-2xl font-bold mb-4">🌀 循環影片的「甜蜜點」</h3>
+                            <p class="text-gray-700 mb-4">對於追求高品質、無縫循環的創作者而言，直接生成超長影片並非最佳策略。考量到品質、成本與技術限制，專業創作者普遍採用更聰明的方法。</p>
+                            <div class="bg-[#fdfbf7] border-l-4 border-[#6a736b] text-[#3a3a3a] p-4 rounded-r-lg mb-8" role="alert">
                                 <p class="font-bold">專家建議：10-15秒</p>
-                                <p>這個時長區間是藝術追求與技術可行性之間的完美平衡。它既能讓緩慢、優雅的動態有足夠時間展現，又在頂級模型的穩定能力範圍內，能有效避免畫面瑕疵，是製作高品質循環影片的理想基礎片段長度。</p>
+                                <p>這個時長是藝術追求與技術可行性之間的完美平衡，足以展現一個完整、優雅的動作，同時能有效避免畫面瑕疵，是製作高品質循環影片的理想基礎長度。</p>
+                            </div>
+
+                            <h3 class="text-2xl font-bold mb-4">🎬 其他影片類型的時長考量</h3>
+                            <p class="text-gray-700 mb-4">「最佳時長」並無標準答案，完全取決於您的創作目標。以下是一些常見情境的參考：</p>
+                            <div class="space-y-4">
+                                <div class="border p-4 rounded-lg bg-gray-50">
+                                    <h4 class="font-bold text-lg mb-1">社群媒體短片 / 迷因</h4>
+                                    <p class="text-sm text-gray-600"><span class="font-bold text-[#8c6d83]">建議長度：3-8 秒。</span>目標是快速的視覺衝擊和訊息傳遞，追求簡潔有力。</p>
+                                </div>
+                                <div class="border p-4 rounded-lg bg-gray-50">
+                                    <h4 class="font-bold text-lg mb-1">微動態攝影 (Cinemagraph)</h4>
+                                    <p class="text-sm text-gray-600"><span class="font-bold text-[#8c6d83]">建議長度：4-6 秒。</span>僅需足夠時間來展示一個微小、重複的動態，如咖啡熱氣、飄動的裙擺。</p>
+                                </div>
+                                <div class="border p-4 rounded-lg bg-gray-50">
+                                    <h4 class="font-bold text-lg mb-1">簡單敘事 / 產品展示</h4>
+                                    <p class="text-sm text-gray-600"><span class="font-bold text-[#8c6d83]">建議長度：視劇情而定。</span>重點是完整呈現一個動作或故事。可考慮使用支援較長影片的平台，或將故事拆成多個短鏡頭分別生成後再剪輯。</p>
+                                </div>
                             </div>
                         </div>
                         <div id="workflow-content" class="hidden">
@@ -218,15 +231,15 @@
                         <div id="prompting-content" class="hidden">
                             <h3 class="text-2xl font-bold mb-4">✍️ 用語言駕馭動態</h3>
                             <p class="text-gray-700 mb-4">當您從圖像生成影片時，提示詞的重點應完全專注於描述「動態」，而非場景本身。</p>
-                            <div class="bg-gray-800 text-white p-4 rounded-lg font-mono text-sm">
-                                <p><span class="text-purple-400"># 控制速度的關鍵詞</span></p>
+                            <div class="bg-gray-700 text-white p-4 rounded-lg font-mono text-sm">
+                                <p><span class="text-pink-400"># 控制速度的關鍵詞</span></p>
                                 <p>"slow motion", "glacial pace", "gentle flow", "subtle movement", "imperceptible speed"</p>
                                 <br>
-                                <p><span class="text-purple-400"># 確保循環的提示詞 (Midjourney範例)</span></p>
-                                <p>"...golden dust particles flow slowly and gracefully across the surface in a continuous, mesmerizing pattern <span class="text-green-400">--loop --motion low</span>"</p>
+                                <p><span class="text-pink-400"># 確保循環的提示詞 (Midjourney範例)</span></p>
+                                <p>"...golden dust particles flow slowly and gracefully across the surface in a continuous, mesmerizing pattern <span class="text-teal-400">--loop --motion low</span>"</p>
                                 <br>
-                                <p><span class="text-purple-400"># 排除不必要動態的負面提示</span></p>
-                                <p>"<span class="text-green-400">--no</span> fast, jitter, shaking, abrupt"</p>
+                                <p><span class="text-pink-400"># 排除不必要動態的負面提示</span></p>
+                                <p>"<span class="text-teal-400">--no</span> fast, jitter, shaking, abrupt"</p>
                             </div>
                         </div>
                     </div>
@@ -234,24 +247,24 @@
             </div>
         </section>
 
-        <section id="legal" class="py-20">
+        <section id="legal" class="py-20 bg-[#fdfbf7]">
             <div class="container mx-auto px-6 max-w-4xl">
                 <div class="text-center mb-12">
-                    <h2 class="text-3xl md:text-4xl font-bold text-gray-800">法律與版權指南</h2>
+                    <h2 class="text-3xl md:text-4xl font-bold text-[#3a3a3a]">法律與版權指南</h2>
                     <p class="text-lg text-gray-600 mt-2">在AI時代，保護您的創作並尊重他人權利。</p>
                 </div>
                 <div id="accordion-container" class="space-y-4">
-                    <div class="accordion-item bg-white rounded-lg shadow-sm">
+                    <div class="accordion-item bg-white rounded-lg shadow-sm border border-[#e0d9cf]">
                         <div class="accordion-title p-4 flex justify-between items-center">
                             <h3 class="font-semibold text-lg">直接使用網路影片的風險？</h3>
                             <span>▼</span>
                         </div>
                         <div class="accordion-content px-4">
                             <p>直接使用您從網路下載的影片具有極高的版權侵權風險。即使是非商業用途，也極有可能無法通過「合理使用」的法律檢驗。更重要的是，用AI「重製」一個視覺上高度相似的影片，可能構成「實質性相似」，同樣屬於侵權行為。</p>
-                            <p class="mt-2 font-bold text-red-600">結論：必須創作一個全新的、具有獨創性表達的原創作品。</p>
+                            <p class="mt-2 font-bold text-red-700">結論：必須創作一個全新的、具有獨創性表達的原創作品。</p>
                         </div>
                     </div>
-                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                     <div class="accordion-item bg-white rounded-lg shadow-sm border border-[#e0d9cf]">
                         <div class="accordion-title p-4 flex justify-between items-center">
                             <h3 class="font-semibold text-lg">AI生成的影片有版權嗎？</h3>
                             <span>▼</span>
@@ -263,10 +276,10 @@
                                 <li>從多個AI生成版本中進行有目的的篩選與策劃。</li>
                                 <li>對AI素材進行大量的後期編輯、調色、剪輯等。</li>
                             </ul>
-                             <p class="mt-2 font-bold text-green-600">結論：人類的創造性介入越深，版權主張力越強。</p>
+                             <p class="mt-2 font-bold text-[#6a736b]">結論：人類的創造性介入越深，版權主張力越強。</p>
                         </div>
                     </div>
-                     <div class="accordion-item bg-white rounded-lg shadow-sm">
+                     <div class="accordion-item bg-white rounded-lg shadow-sm border border-[#e0d9cf]">
                         <div class="accordion-title p-4 flex justify-between items-center">
                             <h3 class="font-semibold text-lg">如何實際保護我的AI作品？</h3>
                             <span>▼</span>
@@ -284,10 +297,10 @@
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8">
+    <footer class="bg-[#6a736b] text-white py-8">
         <div class="container mx-auto px-6 text-center">
             <p>&copy; 2025 AI影片生成互動指南. All rights reserved.</p>
-            <p class="text-sm text-gray-400 mt-2">本指南資訊基於截至2025年8月的公開資料，AI領域發展迅速，具體功能與定價請以各平台官網為準。</p>
+            <p class="text-sm text-gray-300 mt-2">本指南資訊基於截至2025年8月的公開資料，AI領域發展迅速，具體功能與定價請以各平台官網為準。</p>
         </div>
     </footer>
 
@@ -405,11 +418,11 @@
                 }
                 filteredData.forEach(p => {
                     const card = `
-                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
+                        <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col border border-[#e0d9cf]">
                             <div class="flex items-center mb-4">
                                 <span class="text-3xl mr-4">${p.logo}</span>
                                 <div>
-                                    <h3 class="text-xl font-bold text-gray-800">${p.name}</h3>
+                                    <h3 class="text-xl font-bold text-[#3a3a3a]">${p.name}</h3>
                                     <p class="text-sm text-gray-500">${p.strength}</p>
                                 </div>
                             </div>
@@ -439,8 +452,8 @@
                     datasets: [{
                         label: '估算成本 (美元)',
                         data: filteredData.map(p => p.cost),
-                        backgroundColor: 'rgba(12, 138, 138, 0.6)',
-                        borderColor: 'rgba(12, 138, 138, 1)',
+                        backgroundColor: 'rgba(140, 109, 131, 0.6)', /* Mauve Accent */
+                        borderColor: 'rgba(140, 109, 131, 1)',
                         borderWidth: 1
                     }]
                 };
